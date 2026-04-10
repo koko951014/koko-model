@@ -5,41 +5,46 @@ class LottoBalls extends HTMLElement {
   }
 
   set numbers(numbers) {
+    this.render(numbers);
+  }
+
+  render(numbers) {
     this.shadowRoot.innerHTML = `
       <style>
         .ball-container {
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-wrap: wrap;
+          gap: 10px;
           padding: 20px;
         }
         .ball {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background-color: #f0f0f0;
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 1.5em;
+          font-size: 1.2rem;
           font-weight: bold;
-          margin: 0 5px;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          color: white;
+          text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          transition: transform 0.3s ease;
+        }
+        .ball:hover {
+          transform: scale(1.1);
         }
       </style>
+      <div class="ball-container">
+        ${numbers.map(num => `
+          <div class="ball" style="background-color: ${this.getBallColor(num)}">
+            ${num}
+          </div>
+        `).join('')}
+      </div>
     `;
-    const container = document.createElement('div');
-    container.classList.add('ball-container');
-
-    numbers.forEach(number => {
-      const ball = document.createElement('div');
-      ball.classList.add('ball');
-      ball.textContent = number;
-      ball.style.backgroundColor = this.getBallColor(number);
-      container.appendChild(ball);
-    });
-
-    this.shadowRoot.appendChild(container);
   }
 
   getBallColor(number) {
@@ -53,6 +58,29 @@ class LottoBalls extends HTMLElement {
 
 customElements.define('lotto-balls', LottoBalls);
 
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme') || 'light';
+
+if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = '☀️ Light Mode';
+}
+
+themeToggle.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙 Dark Mode';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️ Light Mode';
+    }
+});
+
+// Generator Logic
 const generatorBtn = document.getElementById('generator-btn');
 const lottoBalls = document.querySelector('lotto-balls');
 

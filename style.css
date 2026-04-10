@@ -1,23 +1,78 @@
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #1c1e21;
+  --card-bg: #ffffff;
+  --btn-bg: #4CAF50;
+  --btn-hover: #45a049;
+  --btn-text: #ffffff;
+}
+
+[data-theme='dark'] {
+  --bg-color: #18191a;
+  --text-color: #e4e6eb;
+  --card-bg: #242526;
+  --btn-bg: #2db84c;
+  --btn-hover: #26a041;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #app {
     text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+    width: 90%;
+    max-width: 500px;
+}
+
+h1 {
+    margin-bottom: 2rem;
 }
 
 #generator-btn {
-    padding: 10px 20px;
-    font-size: 1.2em;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
     border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    margin-bottom: 20px;
+    border-radius: 0.5rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#generator-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+#generator-btn:active {
+    transform: scale(0.98);
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: var(--card-bg);
+    border: 1px solid var(--text-color);
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s;
 }
