@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오늘 뭐 먹지? 🍽️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>오늘 뭐 먹지?</h1>
+      <p class="subtitle">점심 메뉴 추천 서비스</p>
+    </header>
+
+    <section class="filters">
+      <button class="filter-btn active" data-category="all">전체</button>
+      <button class="filter-btn" data-category="한식">한식</button>
+      <button class="filter-btn" data-category="중식">중식</button>
+      <button class="filter-btn" data-category="일식">일식</button>
+      <button class="filter-btn" data-category="양식">양식</button>
+      <button class="filter-btn" data-category="분식">분식</button>
+      <button class="filter-btn" data-category="패스트푸드">패스트푸드</button>
+    </section>
+
+    <div class="result-area">
+      <div class="result-card" id="result-card">
+        <div class="result-emoji" id="result-emoji">🎲</div>
+        <div class="result-name" id="result-name">버튼을 눌러 메뉴를 추천받으세요!</div>
+        <div class="result-category" id="result-category"></div>
+        <div class="result-desc" id="result-desc"></div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button class="recommend-btn" id="recommend-btn">
+        <span class="btn-icon">✨</span> 오늘의 메뉴 추천받기
+      </button>
+      <button class="shuffle-btn" id="shuffle-btn" style="display:none;">
+        <span class="btn-icon">🔀</span> 다른 메뉴 보기
+      </button>
+    </div>
+
+    <section class="menu-grid-section">
+      <h2>전체 메뉴 목록</h2>
+      <div class="menu-grid" id="menu-grid"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

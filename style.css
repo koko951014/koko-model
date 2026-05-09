@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  padding: 40px 0 30px;
+  color: white;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: white;
+  color: #764ba2;
+  border-color: white;
+}
+
+/* Result card */
+.result-area {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.result-card {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 50px;
+  text-align: center;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card.pop {
+  animation: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.85); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.result-emoji {
+  font-size: 4rem;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.result-name {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #2d2d2d;
+  margin-bottom: 8px;
+}
+
+.result-category {
+  display: inline-block;
+  padding: 4px 14px;
+  background: #f0e8ff;
+  color: #764ba2;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.result-desc {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.recommend-btn,
+.shuffle-btn {
+  padding: 14px 34px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recommend-btn {
+  background: white;
+  color: #764ba2;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.recommend-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.shuffle-btn {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.shuffle-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.btn-icon {
+  margin-right: 4px;
+}
+
+/* Menu grid */
+.menu-grid-section {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.menu-grid-section h2 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.menu-item {
+  background: white;
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.menu-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: #764ba2;
+}
+
+.menu-item.hidden {
+  display: none;
+}
+
+.menu-item-emoji {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+.menu-item-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2d2d2d;
+}
+
+.menu-item-tag {
+  font-size: 0.7rem;
+  color: #999;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  header h1 { font-size: 2rem; }
+  .result-card { padding: 30px 24px; }
+  .result-name { font-size: 1.5rem; }
+  .menu-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+}
